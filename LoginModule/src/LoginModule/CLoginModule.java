@@ -13,21 +13,23 @@ import AbstractModules.CUIAbstractModule;
 public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 
 	@Override
-	public String getModuleName( String strLanguageName ) {
+	public String getModuleName() {
 
-		String strModuleName =  "Security login window";
+		/*String strModuleName =  "Security login window";
 		
 		if ( strLanguageName != null ) {
 		
 			if ( strLanguageName.equals( "es" ) ) {
 
-				strModuleName =  "Ventana de inicio de sesion";
+				strModuleName =  "Ventana de inicio de sesión";
 
 			}
 		
 		}
 		
-		return strModuleName;
+		return strModuleName;*/
+		
+		return this.Translate( "Session login window" );
 		
 	}
 
@@ -46,9 +48,9 @@ public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 	}
 
 	@Override
-	public String getModuleDescription( String strLanguageName ) {
+	public String getModuleDescription() {
 		
-		String strModuleDescription =  "Allow to security login in system";
+		/*String strModuleDescription =  "Allow to security login in system";
 		
 		if ( strLanguageName != null ) {
 		
@@ -61,6 +63,9 @@ public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 		}
 		
 		return strModuleDescription;
+		*/
+		
+		return this.Translate( "Allow to start session in system" );
 		
 	}
 
@@ -77,6 +82,85 @@ public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 
 		// this module no has dependencies 
 		return new ArrayList<CModuleDependencies>();
+		
+	}
+
+	@Override
+    public Component getUIComponents( Execution CurrentExecution, Component Parent, @SuppressWarnings("rawtypes") HashMap Args ) {
+
+	    Component UIComponent = null;
+	    
+	    if ( CurrentExecution != null ) { 
+	    
+	    	CLoginWindowController.MainModule = this;
+	    	
+	    	UIComponent = CurrentExecution.createComponents( "~./LoginModule/uiviews/login.window.zul", Parent, Args );
+	    
+	    }	
+
+	    return UIComponent;
+	
+	}
+
+	@Override
+	public DesktopPosition getDesktopPosition() {
+
+		return DesktopPosition.Center;
+		
+	}
+
+	@Override
+	public String Translate( String strMessage ) {
+
+		String strTranslatedMessage = "";
+
+		if ( strMessage.equals( "Login" ) ) {
+			
+			strTranslatedMessage = "Aceptar";
+			
+		}
+		else if (  strMessage.equals( "Exit" ) ) {
+			
+			strTranslatedMessage = "Salir";
+			
+		}
+		else if ( strMessage.equals( "Help" ) ) {
+			
+			strTranslatedMessage = "Ayuda";
+			
+		}
+		else if ( strMessage.equals( "Login with you name" ) ) {
+			
+			strTranslatedMessage = "Iniciar sesión con su nombre";
+			
+		}
+		else if ( strMessage.equals( "Username" ) ) {
+			
+			strTranslatedMessage = "Usuario";
+			
+		}
+		else if ( strMessage.equals( "Password" ) ) {
+			
+			strTranslatedMessage = "Contraseña";
+			
+		}
+		else if ( strMessage.equals( "Allow to start session in system" ) ) {
+			
+			strTranslatedMessage = "Permite iniciar sesión en el sistema";
+			
+		}
+		else if ( strMessage.equals( "Session login window" ) ) {
+			
+			strTranslatedMessage = "Ventana de inicio de sesión";
+			
+		}
+		else {
+			
+			strTranslatedMessage = strMessage;
+			
+		}
+
+		return strTranslatedMessage;
 		
 	}
 
@@ -117,37 +201,31 @@ public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 		return strIconPath;
 		
 	}
-
-	@Override
-    public Component getUIComponents( Execution CurrentExecution, Component Parent, @SuppressWarnings("rawtypes") HashMap Args ) {
-
-	    Component UIComponent = null;
-	    
-	    if ( CurrentExecution != null ) 
-	    	UIComponent = CurrentExecution.createComponents( "~./LoginModule/uiviews/login.window.zul", Parent, Args );
-
-	    return UIComponent;
 	
-	}
-
 	@Override
-	public DesktopPosition getDesktopPosition() {
+	public String getImagePath( String strImageName ) {
 
-		return DesktopPosition.Center;
+		String strImagePath = "";
 		
-	}
-
-	@Override
-	public String getTranslateLabel(String strLabel) {
-
-		return null;
+		if ( strImageName.equals( "Login" ) ) {
+			
+			strImagePath = "~./LoginModule/images/check.png";
+			
+		}
+		else if ( strImageName.equals( "Exit" ) ) {
+			
+			strImagePath = "~./LoginModule/images/exit.png";
+			
+			
+		}
+		else if ( strImageName.equals( "Help" ) ) {
+			
+			strImagePath = "~./LoginModule/images/help.png";
+			
+			
+		}
 		
-	}
-
-	@Override
-	public String getImagePath(String strIconName) {
-
-		return null;
+		return strImagePath;
 		
 	}
 	
@@ -169,11 +247,11 @@ public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 
 		CUIAbstractModule Module = new CLoginModule();
 		
-		System.out.println( "Module name:" + Module.getModuleName( null ) );
+		System.out.println( "Module name:" + Module.getModuleName() );
 		System.out.println( "Module internal name: " + Module.getModuleInternalName() );
 		System.out.println( "Module name GUID: " + Module.getModuleNameGUID() );
 		System.out.println( "Module version: " + Module.getModuleVersion() );
-		System.out.println( "Module description: " + Module.getModuleDescription( null ) );
+		System.out.println( "Module description: " + Module.getModuleDescription() );
 		System.out.println( "-------" );
 		System.out.println( "Dependencies:" );
 

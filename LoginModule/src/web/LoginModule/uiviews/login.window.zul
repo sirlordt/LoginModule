@@ -1,7 +1,8 @@
 <!-- it is a login page, no authentication protection and use anonymous template -->
 <zk>
-			<window apply="LoginModule.CLoginWindowController" id="frmLogin" position="center,center"
-				title="Login with you name" border="normal" hflex="min">
+      <div apply="LoginModule.CLoginWindowController" >
+			<window id="frmLogin" position="center,center"
+				title="${$composer.Translate('Login with you name')}" border="normal" hflex="min">
 				<vbox hflex="min" align="center">
 					<grid hflex="min">
 						<columns>
@@ -10,21 +11,24 @@
 						</columns>
 						<rows>
 							<row>
-								Account :
- 						        <combobox id="edAccount" autodrop="true" width="200px"/>
+								${$composer.Translate('Username')} :
+ 						        <combobox id="edUsername" autodrop="true" width="200px"/>
 							</row>
 							<row>
-								Password :
+								${$composer.Translate('Password')} :
 								<textbox id="edPassword" type="password" width="200px" />
 							</row>
 						</rows>
 					</grid>
 					<label id="lbMessage" sclass="warn" value="&#160;" />
 					<div style="text-align: right;">
-					   <button id="btnLogin" label="Login" image="~./LoginModule/images/check.png" />
-                       <button id="btnExit" label="Exit" image="~./LoginModule/images/exit.png" />
-                       <button id="btnHelp" label="Help" image="~./LoginModule//images/help.png" />
+					   <button id="btnLogin" label="${$composer.Translate('Login')}" image="${$composer.getImagePath('Login')}" />
+                       <button id="btnExit" label="${$composer.Translate('Exit')}" image="${$composer.getImagePath('Exit')}" />
+                       <button id="btnHelp" label="${$composer.Translate('Help')}" image="${$composer.getImagePath('Help')}" />
 					</div>
 				</vbox>
 			</window>
+		
+	  </div>
+			
 </zk>
