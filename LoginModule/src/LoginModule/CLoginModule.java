@@ -1,7 +1,9 @@
 package LoginModule;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Execution;
@@ -12,6 +14,52 @@ import AbstractModules.CUIAbstractModule;
 
 public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 
+	Properties prop = null; //new Properties();
+	
+	{
+
+		prop = new Properties();
+		
+		try {
+
+			InputStream is = this.getClass().getResourceAsStream( "/Translations/es_ve.xml" );
+		
+		    prop.loadFromXML( is );
+		
+		    //prop.list(System.out);
+		    
+		}
+		catch ( Exception Ex ) {
+			
+			System.out.println( Ex );
+			
+		}
+		
+	}
+	
+	/*CLoginModule() {
+		
+		Properties prop = new Properties();
+		
+		try {
+
+			InputStream is = this.getClass().getResourceAsStream( "/Translations/es_ve.xml" );
+		
+		    prop.loadFromXML( is );
+		
+		    prop.list(System.out);
+		    
+		}
+		catch ( Exception Ex ) {
+			
+			System.out.println( Ex );
+			
+		}
+
+		prop.list( System.out );		
+		
+	}*/
+	
 	@Override
 	public String getModuleName() {
 
@@ -112,9 +160,9 @@ public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 	@Override
 	public String Translate( String strMessage ) {
 
-		String strTranslatedMessage = "";
+		String strTranslatedMessage = prop.getProperty( strMessage );
 
-		if ( strMessage.equals( "Login" ) ) {
+		/*if ( strMessage.equals( "Login" ) ) {
 			
 			strTranslatedMessage = "Aceptar";
 			
@@ -154,7 +202,9 @@ public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 			strTranslatedMessage = "Ventana de inicio de sesión";
 			
 		}
-		else {
+		else*/
+		
+		if ( strTranslatedMessage == null ) {
 			
 			strTranslatedMessage = strMessage;
 			
@@ -231,6 +281,23 @@ public class CLoginModule extends CUIAbstractModuleAnonymousDesktop {
 	
 	@Override
 	public int InitModule() {
+
+		/*//Properties prop = new Properties();
+		
+		try {
+
+			InputStream is = this.getClass().getResourceAsStream( "/Translations/es_ve.xml" );
+		
+		    prop.loadFromXML( is );
+		
+		    //prop.list(System.out);
+		    
+		}
+		catch ( Exception Ex ) {
+			
+			System.out.println( Ex );
+			
+		}*/
 
 		return 1; //Ok
 		

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Translation UI file</comment>
+<entry key="Login">Iniciar sesión</entry>
+<entry key="Exit">Salir</entry>
+<entry key="Help">Ayuda</entry>
+<entry key="Login with you name">Iniciar sesión con su nombre</entry>
+<entry key="Username">Usuario</entry>
+<entry key="Password">Contraseña</entry>
+<entry key="Allow to start session in system">Permite iniciar sesión en el sistema</entry>
+<entry key="Session login window">Ventana de inicio de sesión</entry>
+<entry key="Loading module">Cargando ventana de inicio de sesión...</entry>
+<entry key="Module loaded">Ventana de inicio de sesión cargada...</entry>
+</properties>
